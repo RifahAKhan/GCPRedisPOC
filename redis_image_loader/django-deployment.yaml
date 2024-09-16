@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-django
+  template:
+    metadata:
+      labels:
+        app: redis-django
+    spec:
+      containers:
+      - name: redis-django
+        image: gcr.io/final-435218/redis-django:v1   
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: image-storage
+          mountPath: /images
+      volumes:
+      - name: image-storage
+        hostPath:
+          path: "/mnt/images"  # This is where the images will be mounted on Kubernetes
