@@ -22,5 +22,4 @@ spec:
           mountPath: /images
       volumes:
       - name: image-storage
-        hostPath:
-          path: "/mnt/images"  # This is where the images will be mounted on Kubernetes
+        emptyDir : {} # This is where the images will be mounted on Kubernetes
