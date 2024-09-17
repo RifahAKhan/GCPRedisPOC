@@ -1,3 +1,4 @@
+# settings.py
 from pathlib import Path
 import os
 import redis
@@ -57,10 +58,17 @@ WSGI_APPLICATION = 'redis_image_loader.wsgi.application'
 # Redis Configuration
 REDIS_HOST = os.getenv('REDIS_HOST', 'smalldb')  # Redis service name in Kubernetes
 REDIS_PORT = os.getenv('REDIS_PORT', '16975')    # Redis service port
+REDIS_PASSWORD = os.getenv('REDIS_PASSWORD', 't705f5Yg')  # Redis password
 REDIS_DB = 0  # Default Redis DB (you can change this if needed)
 
 # Establish Redis connection
-redis_instance = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
+redis_instance = redis.StrictRedis(
+    host=REDIS_HOST,
+    port=REDIS_PORT,
+    password=REDIS_PASSWORD,
+    db=REDIS_DB,
+    decode_responses=True
+)
 
 # Database
 DATABASES = {
