@@ -56,9 +56,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'redis_image_loader.wsgi.application'
 
 # Redis Configuration
-REDIS_HOST = os.getenv('REDIS_HOST', 'smalldb')  # Redis service name in Kubernetes
-REDIS_PORT = os.getenv('REDIS_PORT', '16975')    # Redis service port
-REDIS_PASSWORD = os.getenv('REDIS_PASSWORD', 't705f5Yg')  # Redis password
+REDIS_HOST = os.getenv('REDIS_HOST', 'smalldb.redis.svc.cluster.local')  # Redis service FQDN
+REDIS_PORT = os.getenv('REDIS_PORT', '16975')                            # Redis service port
+REDIS_PASSWORD = os.getenv('REDIS_PASSWORD', 't705f5Yg')                 # Redis password
 REDIS_DB = 0  # Default Redis DB (you can change this if needed)
 
 # Establish Redis connection
