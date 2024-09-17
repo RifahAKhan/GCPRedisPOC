@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: redis-django
-        image: gcr.io/final-435218/redis-django   
+        image: gcr.io/final-435218/redis-django:v1        
         ports:
         - containerPort: 8000
         volumeMounts:
